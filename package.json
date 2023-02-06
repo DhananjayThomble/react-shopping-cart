@@ -1,6 +1,10 @@
 {
   "name": "react-shopping-cart",
   "version": "0.1.0",
+  "author": {
+    "name": "Dhananjay Thomble",
+    "email": "codechamp97@gmail.com"
+  },
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
