@@ -40,7 +40,7 @@ const BuyPage = ({ addInCart }) => {
       <Row>
         {product.map((product) => (
           <Col md={4} key={product.id}>
-            <CartItem product={product}/>
+            <CartItem product={product} />
           </Col>
         ))}
       </Row>
