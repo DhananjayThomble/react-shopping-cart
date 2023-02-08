@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { random, commerce } from "faker";
 import { Container, Row, Col } from "react-bootstrap";
+import CartItem from "./CartItem";
 
 const apiKey = process.env.PEXELS_API;
 
@@ -39,7 +40,7 @@ const BuyPage = ({ addInCart }) => {
       <Row>
         {product.map((product) => (
           <Col md={4} key={product.id}>
-            <h5>{product.productName}</h5>
+            <CartItem product={product}/>
           </Col>
         ))}
       </Row>
