@@ -2,6 +2,10 @@
 
 ## Features:
 - Showing random products from the API
+- Adding products to the cart
+- Removing products from the cart
+- Showing the total price and number of the products in the cart
+
 
 ## Available Scripts
 
