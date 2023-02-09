@@ -13,7 +13,9 @@ function CartItem({ product, addInCart }) {
       <Card.Body>
         <Card.Title>{product.productName}</Card.Title>
         <Card.Text>Price: RS {product.productPrice}</Card.Text>
-        <Button variant="info">Buy Now</Button>
+        <Button variant="info" onClick={() => addInCart(product)}>
+          Buy Now
+        </Button>
       </Card.Body>
     </Card>
   );

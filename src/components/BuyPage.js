@@ -5,12 +5,18 @@ import { Container, Row, Col } from "react-bootstrap";
 import CartItem from "./CartItem";
 
 const apiKey = process.env.PEXELS_API;
+const imgCategory = "laptop";
+const imgCount = 6;
+const pageNumber = 1;
 
-const url = "https://api.pexels.com/v1/search?query=laptop&per_page=6&page=1";
+const url = `https://api.pexels.com/v1/search?query=${imgCategory}&per_page=${imgCount}&page=${pageNumber}`;
+
 const BuyPage = ({ addInCart }) => {
+  // array of product objects
   const [product, setProduct] = useState([]);
 
   const fetchPhotos = async () => {
+    // get img from pexels api
     const { data } = await Axios.get(url, {
       headers: {
         Authorization: apiKey,
@@ -19,6 +25,7 @@ const BuyPage = ({ addInCart }) => {
 
     const { photos } = data;
 
+    // get medium and tiny img from pexels api, product name and price from faker
     const allProduct = photos.map((photo) => ({
       smallImage: photo.src.medium,
       tinyImage: photo.src.tiny,
@@ -27,9 +34,11 @@ const BuyPage = ({ addInCart }) => {
       id: random.uuid(),
     }));
 
+    // set the product state
     setProduct(allProduct);
   };
 
+  // fetch the product info on page load
   useEffect(() => {
     fetchPhotos();
   }, []);
@@ -38,9 +47,11 @@ const BuyPage = ({ addInCart }) => {
     <Container fluid>
       <h1 className="text-success text-center">Buy Page</h1>
       <Row>
+        {/* show 3(12/4) cols per row */}
         {product.map((product) => (
           <Col md={4} key={product.id}>
-            <CartItem product={product} />
+            {/* passing 1 product info to the CartItem */}
+            <CartItem product={product} addInCart={addInCart} />
           </Col>
         ))}
       </Row>
