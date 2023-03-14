@@ -4,14 +4,14 @@ import { random, commerce } from "faker";
 import { Container, Row, Col } from "react-bootstrap";
 import CartItem from "./CartItem";
 
-const apiKey = process.env.PEXELS_API;
+
 const imgCategory = "laptop";
 const imgCount = 6;
 const pageNumber = 1;
-
 const url = `https://api.pexels.com/v1/search?query=${imgCategory}&per_page=${imgCount}&page=${pageNumber}`;
-
+const apiKey = process.env.REACT_APP_PEXELS_API_KEY;
 const BuyPage = ({ addInCart }) => {
+
   // array of product objects
   const [product, setProduct] = useState([]);
 
@@ -22,6 +22,7 @@ const BuyPage = ({ addInCart }) => {
         Authorization: apiKey,
       },
     });
+    console.log(data);
 
     const { photos } = data;
 
